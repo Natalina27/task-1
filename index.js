@@ -13,66 +13,44 @@
 */
 
 // РЕШЕНИЕ
-
 const form = document.getElementById('form');
-const div1 = document.createElement('div');
-const div2 = document.createElement('div');
-const div3 = document.createElement('div');
-const mailLabel = document.createElement('label');
-const mailInput = document.createElement('input');
-const passwordLabel = document.createElement('label');
-const passwordInput = document.createElement('input');
-const checkboxLabel = document.createElement('label');
-const checkboxInput = document.createElement('input');
 const button = document.createElement('button');
+const divMail = document.createElement('div');
+const divPass = document.createElement('div');
+const divCheckbox = document.createElement('div');
+
+function createLabel( div, labelValue, labelText) {
+  const label = document.createElement('label');
+  label.setAttribute('for', labelValue);
+  label.innerText = labelText;
+  div.appendChild(label);
+}
+function createInput(div, cls, labelValue, idValue,  placeholder){
+  const input = document.createElement('input');
+  input.setAttribute('type', labelValue);
+  input.className = cls;
+  input.setAttribute('id', idValue);
+  input.setAttribute('placeholder', placeholder);
+  div.appendChild(input);
+}
 
 //mail
-form.appendChild(div1);
-div1.className = 'form-group';
-
-mailLabel.setAttribute('for', 'email');
-mailLabel.innerText = 'Электропочта';
-
-mailInput.setAttribute('type', 'email');
-mailInput.className = "form-control";
-mailInput.setAttribute('id', 'email');
-mailInput.setAttribute('placeholder', 'Введите свою электропочту');
-
-
-
-div1.appendChild(mailLabel);
-div1.appendChild(mailInput);
+form.appendChild(divMail);
+divMail.className = 'form-group';
+createLabel(divMail, 'email', 'Электропочта');
+createInput( divMail, 'form-control', 'email', 'email', 'Введите свою электропочту');
 
 //password
-form.appendChild(div2);
-div2.className = 'form-group';
-
-passwordLabel.setAttribute('for', 'password');
-passwordLabel.innerText = 'Пароль';
-
-passwordInput.setAttribute('type', 'password');
-passwordInput.className = "form-control";
-passwordInput.setAttribute('id', 'password');
-passwordInput.setAttribute('placeholder', 'Введите пароль');
-
-
-div2.appendChild(passwordLabel);
-div2.appendChild(passwordInput);
+form.appendChild(divPass);
+divPass.className = 'form-group';
+createLabel(divPass, 'password', 'Пароль');
+createInput( divPass, 'form-control', 'password', 'password', 'Введите пароль');
 
 //checkbox
-form.appendChild(div3);
-div3.className = 'form-group form-check';
-
-checkboxInput.setAttribute('type', 'checkbox');
-checkboxInput.className = "form-check-input";
-checkboxInput.setAttribute('id', 'exampleCheck1');
-
-
-checkboxLabel.setAttribute('for', 'exampleCheck1');
-checkboxLabel.innerText = 'Запомнить меня';
-
-div3.appendChild(checkboxInput);
-div3.appendChild(checkboxLabel);
+form.appendChild(divCheckbox);
+divCheckbox.className = 'form-group form-check';
+createInput( divCheckbox, 'form-check-input', 'checkbox', 'exampleCheck1');
+createLabel(divCheckbox, 'checkbox', 'Запомнить меня');
 
 //button
 form.appendChild(button);
